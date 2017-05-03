@@ -20,5 +20,5 @@ app.get('/dashboard', (req, res, next) => {
 })
 
 app.listen(app.get('port'), () => {
-  console.log('ChatCAT Running on Port' + app.get('port')); 
+  console.log('ChatCAT Running on Port ' + app.get('port')); 
 })
