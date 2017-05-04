@@ -1,4 +1,7 @@
-'use strict'
+'use strict'; 
+
+// OAuth Logic 
+require('./auth')(); 
 
 module.exports = { 
   router: require('./routes')(), 

@@ -9,6 +9,16 @@ Mongoose.connection.on('error', error => {
   console.log("MongoDB Error: ", error); 
 });
 
+const chatUser = new Mongoose.Schema({
+  profileId: String, 
+  fullName: String, 
+  profilePic: String 
+}); 
+
+// Mongoose will automatically create a collection called chatUsers
+let userModel = Mongoose.model('chatUser', chatUser); 
+
 module.exports = {
-  Mongoose
+  Mongoose, 
+  userModel
 }
