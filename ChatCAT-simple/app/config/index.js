@@ -11,17 +11,11 @@ if (process.env.NODE_ENV === 'production') {
       clientSecret: process.env.fbClientSecret, 
       callbackURL: process.env.host + "/auth/facebook/callback", 
       profileFields: ['id', 'displayName', 'photos']
-    }, 
-    twitter: {
-      consumerKey: process.env.twConsumerKey, 
-      consumerSecret: process.env.twitterConsumerSecret, 
-      callbackURL: process.env.host + "/auth/twitter/callback", 
-      profileFields: ['id', 'displayName', 'photos']
     }
   };
 } else {
   // dev settings 
-  module.exports = require('./development.json'); 
+  module.exports = require('./config.json'); 
+  
 }
 
-// .json file does not need to be exported? 

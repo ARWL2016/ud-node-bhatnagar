@@ -67,9 +67,19 @@ let findById = (id) => {
   });
 }
 
+let isAuthenticated = (req, res, next) => {
+  // call passport func 
+  if (req.isAuthenticated()) {
+    next(); 
+  } else {
+    res.redirect('/'); 
+  }
+}
+
 module.exports = {
   route, 
   findOne,
   findById,
-  createNewUser
+  createNewUser, 
+  isAuthenticated
 }
