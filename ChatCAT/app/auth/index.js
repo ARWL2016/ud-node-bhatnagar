@@ -3,7 +3,7 @@ const config = require('../config');
 const h = require('../helpers'); 
 const logger = require('../logger'); 
 const FacebookStrategy = require('passport-facebook').Strategy; 
-const TwitterStrategy = require('passport-twitter').Strategy; 
+// const TwitterStrategy = require('passport-twitter').Strategy; 
 
 module.exports = () => {
   // when passport authenticates the user, it will call this function 
@@ -37,5 +37,5 @@ module.exports = () => {
   }
 
   passport.use(new FacebookStrategy(config.fb, authProcessor)); 
-  passport.use(new TwitterStrategy(config.twitter, authProcessor));
+  // passport.use(new TwitterStrategy(config.twitter, authProcessor));
 }
