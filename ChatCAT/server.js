@@ -12,6 +12,14 @@ app.use(chatCat.session);
 app.use(passport.initialize()); 
 // connect passport to the express session
 app.use(passport.session()); 
+app.use(require('morgan')('combined', {
+  stream: {
+    write: message => {
+      // write to logs 
+      chatCat.logger.log('info', message); 
+    }
+  }
+})); 
 
 app.use('/', chatCat.router); 
 
