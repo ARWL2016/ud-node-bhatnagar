@@ -34,11 +34,11 @@ module.exports = () => {
         successRedirect: '/rooms', 
         failureRedirect: '/'
       }), 
-      '/auth/twitter': passport.authenticate('twitter'), 
-      '/auth/twitter/callback': passport.authenticate('twitter', {
-        successRedirect: '/rooms', 
-        failureRedirect: '/'
-      }), 
+      // '/auth/twitter': passport.authenticate('twitter'), 
+      // '/auth/twitter/callback': passport.authenticate('twitter', {
+      //   successRedirect: '/rooms', 
+      //   failureRedirect: '/'
+      // }), 
       '/logout': (req, res, next) => {
         // passport method which ends a session
         req.logout(); 
