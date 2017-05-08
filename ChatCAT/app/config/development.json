@@ -3,8 +3,8 @@
   "dbURI": "mongodb://chatcatuser:chatcat@ds129641.mlab.com:29641/mychatcatdb", 
   "sessionSecret": "catscanfly", 
   "fb": {
-    "clientID": "1975382859360919", 
-    "clientSecret": "f3d56bfd26bdeefd55baaef93f46fc9d",  
+    "clientID": "***", 
+    "clientSecret": "***",  
     "callbackURL": "//localhost:3000/auth/facebook/callback", 
     "profileFields": ["id", "displayName", "photos"]
   }, 
@@ -13,5 +13,10 @@
     "consumerSecret": "9999",  
     "callbackURL": "//localhost:3000/auth/twitter/callback", 
     "profileFields": ["id", "displayName", "photos"]
+  }, 
+  "redis": {
+    "host": "127.0.0.1", 
+    "port": 6379, 
+    "password": ""
   }
 }

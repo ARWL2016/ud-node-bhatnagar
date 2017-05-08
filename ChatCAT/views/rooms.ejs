@@ -13,7 +13,9 @@
       // roomslist is not a route - it is a sockets namespace
       // one connection can contain several data pipelines 
       // this statement will attempt to connect to our sockets server
-      let socket = io('<%= host %>' + '/roomslist'); 
+      let socket = io('<%= host %>' + '/roomslist', {
+        transports: ['websockets']
+      }); 
       let newRoomInput = $("input[name='roomName']"); 
 
       socket.on('connect', () => console.log('Connected to server!'));
