@@ -13,7 +13,7 @@ let ioServer = (app) => {
   const server = require('http').Server(app); 
   const io = require('socket.io')(server);
   // configure sockets to only use websockets (not long polling)
-  io.set('transports', ['websocket']); 
+  // io.set('transports', ['websocket']); 
   let pubClient = redis(config.redis.port, config.redis.host, {
     auth_pass: config.redis.password
   });
