@@ -9,7 +9,7 @@
   "author": "Alistair Willis",
   "license": "ISC",
   "engines": {
-    "node": "6.9.2"
+    "node": "4.2.2"
   },
   "dependencies": {
     "connect-mongo": "1.1.0",
