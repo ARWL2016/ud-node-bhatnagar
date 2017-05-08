@@ -94,6 +94,71 @@ let randomHex = () => {
   return crypto.randomBytes(24).toString('hex'); 
 }
 
+let findRoomById = (allrooms, roomID) => {
+  return allrooms.find((element, index, array) => {
+    if(element.roomID === roomID) {
+      return true 
+    } else {
+      return false; 
+    }
+  }); 
+}
+
+let addUserToRoom = (allrooms, data, socket) => {
+  let getRoom = findRoomById(allrooms, data.roomID); 
+  if(getRoom !== undefined) {
+    // Get the active user's ID (session ObjectID)
+    // Made possible by the bridge between sockets and express session
+    let userID = socket.request.session.passport.user; 
+    // Does user exist in the chatroom
+    let checkUser = getRoom.users.findIndex((el, ind, arr) => {
+      if(el.userID === userID) {
+        return true; 
+      } else {
+        return false; 
+      }
+    }); 
+
+    // remove user 
+    if(checkUser > -1) {
+      getRoom.users.splice(checkUser, 1); 
+    }
+
+    // add user 
+    getRoom.users.push({
+      socketID: socket.id, 
+      userID, 
+      user: data.user, 
+      userPic: data.userPic
+    });
+
+    // Join the room channel 
+    socket.join(data.roomID); 
+
+    // return the updated room object 
+    return getRoom; 
+  }
+}
+
+let removeUserFromRoom = (allrooms, socket) => {
+  for (let room of allrooms) {
+    let findUser = room.users.findIndex((el, ind, arr) => {
+      if (el.socketID === socket.id) {
+        return true; 
+      } else {
+        return false 
+      }
+      // return element.socketID === socket.id ? true : false; 
+    });
+
+    if(findUser > -1) {
+      socket.leave(room.roomID); 
+      room.users.splice(findUser, 1); 
+      return room; 
+    }
+  }
+}
+
 module.exports = {
   route, 
   findOne,
@@ -101,5 +166,8 @@ module.exports = {
   createNewUser, 
   isAuthenticated, 
   findRoomByName, 
-  randomHex
+  randomHex, 
+  findRoomById, 
+  addUserToRoom,
+  removeUserFromRoom
 }
