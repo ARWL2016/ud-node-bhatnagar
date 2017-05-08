@@ -9,21 +9,18 @@ module.exports = () => {
   // this creates a session with the user.id (the unique id key assigned by Mongo)
   // since sessions use cookies, we don't want to store all our data in one
   passport.serializeUser((user, done) => {
-    console.log('serialize', user);
     done(null, user.id); 
   })
   // use that serialized id to recover use data 
   // this will make the id available in req.user (the request stream)
   passport.deserializeUser((id, done) => {
-    console.log('deserialize', id);
     h.findById(id)
       .then(user => done(null, user))
       .catch(error => console.log('Error when deserializing user'));
   })
 
   let authProcessor = (accessToken, refreshToken, profile, done) => {
-      // Find a user in local db using profile.id and return the data, or create user, and call done
-      console.log('authProcessor', accessToken, profile); 
+      // Find a user in local db using profile.id and return the data, or create user, and call done 
       h.findOne(profile.id)
           .then(result => {
             if (result) {
