@@ -14,12 +14,12 @@ if (process.env.NODE_ENV === 'production') {
       callbackURL: process.env.host + "/auth/facebook/callback", 
       profileFields: ['id', 'displayName', 'photos']
     }, 
-    twitter: {
-      consumerKey: process.env.twConsumerKey, 
-      consumerSecret: process.env.twitterConsumerSecret, 
-      callbackURL: process.env.host + "/auth/twitter/callback", 
-      profileFields: ['id', 'displayName', 'photos']
-    }, 
+    // twitter: {
+    //   consumerKey: process.env.twConsumerKey, 
+    //   consumerSecret: process.env.twitterConsumerSecret, 
+    //   callbackURL: process.env.host + "/auth/twitter/callback", 
+    //   profileFields: ['id', 'displayName', 'photos']
+    // }, 
     redis: {
       host: redisURI.hostname, 
       port: redisURI.port, 
